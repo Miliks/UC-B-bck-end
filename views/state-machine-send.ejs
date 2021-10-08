@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>List of states</title>
+</head>
+
+<body>
+       
+    <div class="table-data">
+        <h2>STATES</h2>
+        <table border="1">
+            <tr>
+                <th>State Number</th>
+                <th>State Description</th>
+                <th>Send event</th>
+            </tr>
+
+            <% if(statData.length!=0){ var i=1; statData.forEach(function(data){ %>
+               
+                <tr>
+                    <td>
+                        <%-data.stat_numb %>
+                    </td>
+                    <td>
+                        <%-data.stat_descr %>
+                    </td>
+                    
+                    <td><a href="/states/state-machine?statnum=<%-data.stat_numb %>">Send mission</a></td>
+                    <!--td><a href="/orders/delete/<%=data.id%>">Delete</a></td-->
+                </tr>
+                <% i++; }) %>
+                    <% } else{ %>
+                        <tr>
+                            <td colspan="7">No Data Found</td>
+                        </tr>
+                        <% } %>
+        </table>
+    </div>
+    
+</body>
+
+</html>

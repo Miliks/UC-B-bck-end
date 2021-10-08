@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>List of componets with coordinates recognized UC-C</title>
+</head>
+
+
+    <div class="table-data">
+        <h2>TASKS</h2>
+        <table border="1">
+            <tr>
+                <th>Task ID</th>
+                <th>Part number</th>
+                <th>Component description</th>
+                <th> Coordinates</th>
+                <th>Send event OK</th>
+                <th>Send event NOK</th>
+            </tr>
+
+            <% if(statData.length!=0){ var i=1; statData.forEach(function(data_comp){ %>
+               
+                <tr>
+                    <td>
+                        <%-data_comp.task_id %>
+                    </td>
+                    <td>
+                        <%-data_comp.part_number %>
+                    </td>
+                    <td>
+                        <%-data_comp.componentName %>
+                    </td>
+                    <td>
+                        <%-data_comp.coordinates %>
+                    </td>
+                    
+                    <td><a href="/stub_ucc/riconoscimento?status=OK&part_num=<%-data_comp.part_number %>&coordinates=<%-data_comp.coordinates %>">Riconoscimento OK</a></td>
+                    <td><a href="/stub_ucc/riconoscimento?status=NOK&part_num=<%-data_comp.part_number %>&coordinates=<%-data_comp.coordinates %>">Riconoscimento NOK</a></td>
+           
+                </tr>
+                <% i++; }) %>
+                
+                        <% } else{ %>
+                            <tr>
+                                <td colspan="7">No Data Found</td>
+                            </tr>
+                            <% } %>
+        </table>
+    </div>
+    
+</body>
+
+</html>

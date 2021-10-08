@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>List of operations for UC-C</title>
+</head>
+
+<body>
+    <div style="align-items: center">
+    
+
+        <input style="background-color:rgb(239, 239, 243);width:5cm;height:1cm;font-size : 10px;" type="button" onclick="location.href='/stub_ucc/riconoscimento';" value="Riconoscimento componenti" />
+    </div>
+    <div class="table-data">
+        <h2>TASKS</h2>
+        <table border="1">
+            <tr>
+                <th>TASK Number</th>
+                <th> Description</th>
+                <th>Send event OK</th>
+                <th>Send event NOK</th>
+            </tr>
+
+            <% if(statData.length!=0){ var i=1; statData.forEach(function(data){ %>
+               
+                <tr>
+                    <td>
+                        <%-data.task_id %>
+                    </td>
+                    <td>
+                        <%-data.operation_to_execute %>
+                    </td>
+                    
+                    <td><a href="/stub_ucc/stub_ucc-tasks?status=OK&task_num=<%-data.task_id %>">Send mission OK</a></td>
+                    <td><a href="/stub_ucc/stub_ucc-tasks??status=NOK&task_num=<%-data.task_num %>">Send mission NOK</a></td>
+                    <!--td><a href="/orders/delete/<%=data.id%>">Delete</a></td-->
+                </tr>
+                <% i++; }) %>
+                
+                        <% } else{ %>
+                            <tr>
+                                <td colspan="7">No Data Found</td>
+                            </tr>
+                            <% } %>
+        </table>
+    </div>
+    
+</body>
+
+</html>
